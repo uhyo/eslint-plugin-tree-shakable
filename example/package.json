@@ -12,6 +12,6 @@
   "license": "",
   "devDependencies": {
     "eslint": "^8.16.0",
-    "eslint-plugin-tree-shakable": "^1.0.0-alpha.0"
+    "eslint-plugin-tree-shakable": "^1.0.0"
   }
 }
