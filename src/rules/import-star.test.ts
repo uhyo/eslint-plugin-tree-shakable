@@ -91,6 +91,22 @@ console.log(t[\`foo\`]);
           },
         ],
       },
+      {
+        code: `
+import * as t from './pikachu';
+// Webpack cannot handle this case
+const { foo } = t;
+console.log(foo);
+`,
+        errors: [
+          {
+            messageId: "non-tree-shakable-access",
+            data: { module: "./pikachu" },
+            line: 4,
+            column: 17,
+          },
+        ],
+      },
     ],
   });
 });
