@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src/**/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-plugin-tree-shakable": "^1.0.0-alpha.0"
+  }
+}

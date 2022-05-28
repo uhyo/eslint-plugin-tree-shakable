@@ -1,0 +1,12 @@
+env:
+  browser: true
+  es2021: true
+plugins:
+  - tree-shakable
+extends:
+  - eslint:recommended
+  - plugin:tree-shakable/all
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+rules: {}
