@@ -50,6 +50,9 @@ function checkModuleNamespaceUsage(
 ) {
   const scope = context.getScope();
   const variable = scope.set.get(identifier.name);
+  if (variable === undefined) {
+    return;
+  }
   for (const ref of variable.references) {
     const referencedIdentifier = ref.identifier;
     if (
@@ -74,16 +77,24 @@ function isTreeShakingSafeReference(identifier: TSESTree.Identifier): boolean {
     return false;
   }
 
-  if (parent.type === TSESTree.AST_NODE_TYPES.MemberExpression) {
-    if (!parent.computed) {
-      // id.foo
-      return true;
+  switch (parent.type) {
+    case TSESTree.AST_NODE_TYPES.MemberExpression: {
+      if (!parent.computed) {
+        // id.foo
+        return true;
+      }
+      const memberName = parent.property;
+      if (memberName.type === TSESTree.AST_NODE_TYPES.Literal) {
+        // id["foo"]
+        return true;
+      }
+      return false;
     }
-    const memberName = parent.property;
-    if (memberName.type === TSESTree.AST_NODE_TYPES.Literal) {
-      // id["foo"]
+    case TSESTree.AST_NODE_TYPES.TSTypeQuery: {
+      // 'typeof t' in TypeScript's type context
       return true;
     }
   }
+
   return false;
 }

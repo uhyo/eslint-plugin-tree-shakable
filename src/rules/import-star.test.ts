@@ -94,3 +94,35 @@ console.log(t[\`foo\`]);
     ],
   });
 });
+
+describe("TypeScript concerns", () => {
+  tester.run(ruleName, importStarRule, {
+    valid: [
+      {
+        name: "TypeScript's 'typeof' should not affect tree shaking",
+        code: `
+import * as t from 'foo';
+type K = keyof typeof t[Foo];
+`,
+      },
+    ],
+    invalid: [
+      {
+        name: "JavaScript 'typeof' should be still forbidden",
+        code: `
+import * as t from 'foo';
+const a = typeof t;
+`,
+        errors: [
+          {
+            messageId: "non-tree-shakable-access",
+            data: { module: "foo" },
+            // 't' in `typeof t`
+            line: 3,
+            column: 18,
+          },
+        ],
+      },
+    ],
+  });
+});
