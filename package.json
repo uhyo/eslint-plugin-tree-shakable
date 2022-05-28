@@ -1,0 +1,35 @@
+{
+  "name": "eslint-plugin-tree-shakable",
+  "version": "1.0.0",
+  "description": "ESLint plugin that hels write tree-shakable code",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "vitest"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin"
+  ],
+  "author": "uhyo <uhyo@uhy.ooo>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uhyo/eslint-plugin-tree-shakable"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^17.0.36",
+    "@typescript-eslint/parser": "^5.26.0",
+    "eslint": "^8.16.0",
+    "prettier": "^2.6.2",
+    "typescript": "^4.7.2",
+    "vitest": "^0.12.9"
+  },
+  "dependencies": {
+    "@typescript-eslint/experimental-utils": "^5.26.0",
+    "@typescript-eslint/typescript-estree": "^5.26.0"
+  }
+}
