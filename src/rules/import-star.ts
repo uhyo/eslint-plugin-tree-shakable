@@ -1,4 +1,4 @@
-import { TSESLint, TSESTree } from "@typescript-eslint/experimental-utils";
+import { TSESLint, TSESTree } from "@typescript-eslint/utils";
 
 type MessageIds = "non-tree-shakable-access";
 

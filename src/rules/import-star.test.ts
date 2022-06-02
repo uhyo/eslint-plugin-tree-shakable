@@ -1,4 +1,4 @@
-import { TSESLint } from "@typescript-eslint/experimental-utils";
+import { TSESLint } from "@typescript-eslint/utils";
 import { describe } from "vitest";
 import importStarRule from "./import-star";
 

@@ -26,14 +26,14 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^17.0.36",
-    "@typescript-eslint/parser": "^5.26.0",
+    "@typescript-eslint/parser": "^5.27.0",
     "eslint": "^8.16.0",
     "prettier": "^2.6.2",
     "typescript": "^4.7.2",
     "vitest": "^0.12.9"
   },
   "dependencies": {
-    "@typescript-eslint/experimental-utils": "^5.26.0",
-    "@typescript-eslint/typescript-estree": "^5.26.0"
+    "@typescript-eslint/typescript-estree": "^5.27.0",
+    "@typescript-eslint/utils": "^5.27.0"
   }
 }
