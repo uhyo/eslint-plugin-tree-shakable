@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-tree-shakable",
   "version": "1.0.0",
-  "description": "ESLint plugin that hels write tree-shakable code",
+  "description": "ESLint plugin that helps you write tree-shakable code",
   "exports": {
     ".": "./dist/index.js"
   },
