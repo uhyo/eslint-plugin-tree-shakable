@@ -8,6 +8,10 @@ const tester = new TSESLint.RuleTester({
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
+    jsxPragma: null, // for @typescript/eslint-parser
   },
 });
 
@@ -24,6 +28,16 @@ console.log(t.foo);
         code: `
 import * as t from 'foobar'
 const a = t["foo"];
+`,
+      },
+      {
+        code: `
+import * as React from 'react';
+const FC = () => (
+  <div>
+    <React.Fragment>{"aaa"}</React.Fragment>
+  </div>
+);
 `,
       },
     ],
