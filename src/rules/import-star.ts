@@ -90,6 +90,10 @@ function isTreeShakingSafeReference(identifier: TSESTree.Identifier): boolean {
       }
       return false;
     }
+    case TSESTree.AST_NODE_TYPES.TSQualifiedName: {
+      // TypeScript's type
+      return true;
+    }
     case TSESTree.AST_NODE_TYPES.TSTypeQuery: {
       // 'typeof t' in TypeScript's type context
       return true;

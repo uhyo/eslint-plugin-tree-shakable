@@ -121,6 +121,20 @@ import * as t from 'foo';
 type K = keyof typeof t[Foo];
 `,
       },
+      {
+        name: "TypeScript's type should not affect tree shaking",
+        code: `
+import * as t from 'foo';
+type K = keyof t.SomeType;
+`,
+      },
+      {
+        name: "TypeScript's type should not affect tree shaking",
+        code: `
+import type * as t from 'foo';
+type K = keyof t.SomeType["member"];
+`,
+      },
     ],
     invalid: [
       {
