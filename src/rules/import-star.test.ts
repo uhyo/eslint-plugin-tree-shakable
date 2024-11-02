@@ -1,5 +1,4 @@
 import { TSESLint } from "@typescript-eslint/utils";
-import { describe } from "vitest";
 import importStarRule from "./import-star";
 
 const ruleName = "import-star";

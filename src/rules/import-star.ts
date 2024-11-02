@@ -37,7 +37,7 @@ function getModuleSpecifier(node: TSESTree.ImportNamespaceSpecifier): string {
   }
   if (parent.type !== TSESTree.AST_NODE_TYPES.ImportDeclaration) {
     throw new Error(
-      "Cannot find ImportDeclaration for given ImportNamespaceSpecifier"
+      "Cannot find ImportDeclaration for given ImportNamespaceSpecifier",
     );
   }
   return parent.source.value;
@@ -46,7 +46,7 @@ function getModuleSpecifier(node: TSESTree.ImportNamespaceSpecifier): string {
 function checkModuleNamespaceUsage(
   context: Readonly<TSESLint.RuleContext<MessageIds, unknown[]>>,
   moduleName: string,
-  identifier: TSESTree.Identifier
+  identifier: TSESTree.Identifier,
 ) {
   const scope = context.getScope();
   const variable = scope.set.get(identifier.name);
