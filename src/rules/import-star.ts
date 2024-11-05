@@ -56,7 +56,8 @@ function checkModuleNamespaceUsage(
   for (const ref of variable.references) {
     const referencedIdentifier = ref.identifier;
     if (
-      referencedIdentifier.type !== TSESTree.AST_NODE_TYPES.Identifier ||
+      (referencedIdentifier.type !== TSESTree.AST_NODE_TYPES.Identifier &&
+        referencedIdentifier.type !== TSESTree.AST_NODE_TYPES.JSXIdentifier) ||
       !isTreeShakingSafeReference(referencedIdentifier)
     ) {
       context.report({
@@ -70,7 +71,9 @@ function checkModuleNamespaceUsage(
   }
 }
 
-function isTreeShakingSafeReference(identifier: TSESTree.Identifier): boolean {
+function isTreeShakingSafeReference(
+  identifier: TSESTree.Identifier | TSESTree.JSXIdentifier,
+): boolean {
   // Only allow `id.foo` or `id["foo"]` references.
   const parent = identifier.parent;
   if (parent === undefined) {
@@ -90,6 +93,12 @@ function isTreeShakingSafeReference(identifier: TSESTree.Identifier): boolean {
       }
       return false;
     }
+
+    case TSESTree.AST_NODE_TYPES.JSXMemberExpression: {
+      // JSX Elements
+      return true;
+    }
+
     case TSESTree.AST_NODE_TYPES.TSQualifiedName: {
       // TypeScript's type
       return true;
